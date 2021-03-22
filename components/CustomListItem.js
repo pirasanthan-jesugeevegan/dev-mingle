@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { ListItem, Avatar } from 'react-native-elements';
 const CustomListItem = ({ id, chatName, enterChat }) => {
   return (
-    <ListItem>
+    <ListItem onPress={() => enterChat(id, chatName)} key={id} bottomDivider>
       <Avatar
         rounded
         source={{
@@ -13,11 +13,12 @@ const CustomListItem = ({ id, chatName, enterChat }) => {
       />
       <ListItem.Content>
         <ListItem.Title style={{ frontWeight: '800' }}>
-          Youtube Chat
+          {chatName}
         </ListItem.Title>
-        <ListItem.Subtitle numberOfLines={1} ellipsizeMode="tail">
-          dgdfdfdfdfdfdfdfsdsdsdsdsdsddsdsdsdsdsdsdsds
-        </ListItem.Subtitle>
+        <ListItem.Subtitle
+          numberOfLines={1}
+          ellipsizeMode="tail"
+        ></ListItem.Subtitle>
       </ListItem.Content>
     </ListItem>
   );
