@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { KeyboardAvoidingView } from 'react-native';
 
-const LoginScreen = () => {
+const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const signIn = () => {};
@@ -33,8 +33,13 @@ const LoginScreen = () => {
           onChangeText={(text) => setPassword(text)}
         />
       </View>
-      <Button containerStyle={styles.button} onPress={signIn} title="Login" />
-      <Button containerStyle={styles.button} type="outline" title="Sign Up" />
+      <Button onPress={signIn} containerStyle={styles.button} title="Login" />
+      <Button
+        onPress={() => navigation.navigate('SignUp')}
+        containerStyle={styles.button}
+        type="outline"
+        title="Sign Up"
+      />
       <View style={{ height: 200 }} />
     </KeyboardAvoidingView>
   );
