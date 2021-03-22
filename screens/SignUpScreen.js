@@ -2,6 +2,7 @@ import React, { useLayoutEffect, useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { KeyboardAvoidingView, StyleSheet, View } from 'react-native';
 import { Button, Input, Text } from 'react-native-elements';
+import { auth } from '../firebase';
 
 const SignUpScreen = ({ navigation }) => {
   const [name, setName] = useState('');
@@ -15,7 +16,19 @@ const SignUpScreen = ({ navigation }) => {
     });
   }, [navigation]);
 
-  const signUp = () => {};
+  const signUp = () => {
+    auth
+      .createUserWithEmailAndPassword(email, password)
+      .then((authUser) => {
+        authUser.user.updateProfile({
+          displayName: name,
+          photoURL:
+            image ||
+            'https://cencup.com/wp-content/uploads/2019/07/avatar-placeholder.png',
+        });
+      })
+      .catch((error) => alert(error.message));
+  };
   return (
     <KeyboardAvoidingView behavior="padding" style={styles.container}>
       <StatusBar style="light" />
