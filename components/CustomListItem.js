@@ -26,7 +26,7 @@ const CustomListItem = ({ id, chatName, enterChat }) => {
         rounded
         source={{
           uri:
-            chatMessages?.[0].photo ||
+            chatMessages?.[0]?.photo ||
             'https://cencup.com/wp-content/uploads/2019/07/avatar-placeholder.png',
         }}
       />
@@ -35,7 +35,7 @@ const CustomListItem = ({ id, chatName, enterChat }) => {
           {chatName}
         </ListItem.Title>
         <ListItem.Subtitle numberOfLines={1} ellipsizeMode="tail">
-          {chatMessages?.[0]?.displayName}: {chatMessages?.[0].message}
+          {chatMessages?.[0]?.displayName}: {chatMessages?.[0]?.message}
         </ListItem.Subtitle>
       </ListItem.Content>
     </ListItem>

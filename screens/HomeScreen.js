@@ -37,7 +37,7 @@ const HomeScreen = ({ navigation }) => {
       headerStyle: {
         backhroundColor: '#fff',
       },
-      headerTitleStyle: { color: 'black' },
+      headerTitleStyle: { color: '#068399' },
       headerTintColor: 'black',
       headerLeft: () => (
         <View style={{ marginLeft: 20 }}>
@@ -56,13 +56,13 @@ const HomeScreen = ({ navigation }) => {
           }}
         >
           <TouchableOpacity activeOpacity={0.5}>
-            <AntDesign name="camerao" size={24} color="black" />
+            <AntDesign name="camerao" size={24} color="#068399" />
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => navigation.navigate('AddChat')}
             activeOpacity={0.5}
           >
-            <SimpleLineIcons name="pencil" size={24} color="black" />
+            <SimpleLineIcons name="pencil" size={24} color="#068399" />
           </TouchableOpacity>
         </View>
       ),

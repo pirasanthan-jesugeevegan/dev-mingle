@@ -65,6 +65,7 @@ const SignUpScreen = ({ navigation }) => {
         />
       </View>
       <Button
+        buttonStyle={{ backgroundColor: '#068399' }}
         containerStyle={styles.button}
         raised
         onPress={signUp}

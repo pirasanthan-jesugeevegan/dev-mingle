@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { KeyboardAvoidingView } from 'react-native';
 import { auth } from '../firebase';
-
+import Icon from '../assets/icon.png';
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -27,7 +27,7 @@ const LoginScreen = ({ navigation }) => {
       <StatusBar styles="light" />
       <Image
         source={{
-          uri: '../assets/Number 2 PNG images free download_PNG14925.png',
+          uri: Icon,
         }}
         style={{ width: 200, height: 200, marginBottom: 50 }}
       />
@@ -48,8 +48,14 @@ const LoginScreen = ({ navigation }) => {
           onSubmitEditing={signIn}
         />
       </View>
-      <Button onPress={signIn} containerStyle={styles.button} title="Login" />
       <Button
+        buttonStyle={{ backgroundColor: '#068399' }}
+        onPress={signIn}
+        containerStyle={styles.button}
+        title="Login"
+      />
+      <Button
+        buttonStyle={{ borderColor: '#068399' }}
         onPress={() => navigation.navigate('SignUp')}
         containerStyle={styles.button}
         type="outline"
@@ -71,5 +77,5 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
   inputContainer: { width: 300 },
-  button: { width: 200, marginTop: 10 },
+  button: { width: 300, marginTop: 10, color: 'white' },
 });
