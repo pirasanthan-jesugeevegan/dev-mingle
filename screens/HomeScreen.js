@@ -10,14 +10,9 @@ import { Avatar } from 'react-native-elements/dist/avatar/Avatar';
 import { AntDesign, SimpleLineIcons } from '@expo/vector-icons';
 import CustomListItem from '../components/CustomListItem';
 import { auth, db } from '../firebase';
-const HomeScreen = ({ navigation }) => {
-  const [chats, setChats] = useState([]);
 
-  const signOutUser = () => {
-    auth.signOut().then(() => {
-      navigation.replace('Login');
-    });
-  };
+const HomeScreen = ({ route, navigation }) => {
+  const [chats, setChats] = useState([]);
 
   useEffect(() => {
     const unsubscribe = db.collection('chats').onSnapshot((snapshot) =>
@@ -41,7 +36,10 @@ const HomeScreen = ({ navigation }) => {
       headerTintColor: 'black',
       headerLeft: () => (
         <View style={{ marginLeft: 20 }}>
-          <TouchableOpacity onPress={signOutUser} activeOpacity={0.5}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('Profile', { route })}
+            activeOpacity={0.5}
+          >
             <Avatar rounded source={{ uri: auth?.currentUser?.photoURL }} />
           </TouchableOpacity>
         </View>

@@ -5,14 +5,16 @@ import { StatusBar } from 'expo-status-bar';
 import { KeyboardAvoidingView } from 'react-native';
 import { auth } from '../firebase';
 import Icon from '../assets/icon.png';
+
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
+  const [user, setUser] = useState([]);
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((authUser) => {
+      setUser(authUser);
       if (authUser) {
-        navigation.replace('Home');
+        navigation.replace('Home', { authUser });
       }
     });
     return unsubscribe;
@@ -32,7 +34,6 @@ const LoginScreen = ({ navigation }) => {
       <View style={styles.inputContainer}>
         <Input
           placeholder="Email"
-          autoFocus
           type="email"
           value={email}
           onChangeText={(text) => setEmail(text)}
