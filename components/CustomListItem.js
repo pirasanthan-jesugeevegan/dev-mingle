@@ -38,6 +38,7 @@ const CustomListItem = ({ id, chatName, enterChat }) => {
           {chatMessages?.[0]?.displayName}: {chatMessages?.[0]?.message}
         </ListItem.Subtitle>
       </ListItem.Content>
+      <ListItem.Chevron />
     </ListItem>
   );
 };

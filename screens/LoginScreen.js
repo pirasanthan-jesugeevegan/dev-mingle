@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { KeyboardAvoidingView } from 'react-native';
 import { auth } from '../firebase';
-import Icon from '../assets/icon.png';
+import Icon from '../assets/logo.png';
 
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
